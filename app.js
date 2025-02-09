@@ -5,6 +5,7 @@ import huntRoutes from "./routes/huntRoutes.js";
 import fishingRoutes from "./routes/fishingRoutes.js";
 import exploreRoutes from "./routes/exploreRoutes.js";
 import harvestRoutes from "./routes/harvestRoutes.js";
+import beastsRoutes from "./routes/beastsRoutes.js";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use("/hunt", huntRoutes);
 app.use("/fishing", fishingRoutes);
 app.use("/explore", exploreRoutes);
 app.use("/harvest", harvestRoutes);
+app.use("/beasts", beastsRoutes);
 
 app.listen(PORT, (req, res) => {
   console.info(`Server running ${PORT}`);
