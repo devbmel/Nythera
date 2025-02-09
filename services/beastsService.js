@@ -12,6 +12,14 @@ class BeastsService {
       throw new Error(error.message);
     }
   }
+
+  async getBeastById(id) {
+    try {
+      return await this.beastRepository.getBeastById(id);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 export default BeastsService;

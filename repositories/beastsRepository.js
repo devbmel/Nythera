@@ -18,9 +18,23 @@ class BeastsRepository {
     try {
       connexion = await this.pool.getConnection();
 
-      return await connexion.query(" SELECT * FROM Beasts");
+      return await connexion.query("SELECT * FROM Beasts");
     } catch (error) {
       const message = `Error in getIBeast: ${error.message}`;
+      console.error(message);
+      throw new Error(message);
+    } finally {
+      if (connexion) connexion.release();
+    }
+  }
+
+  async getBeastById(id) {
+    let connexion;
+    try {
+      connexion = await this.pool.getConnection();
+      return await connexion.query("SELECT * FROM Beasts WHERE id = ?", [id]);
+    } catch (error) {
+      const message = `Error in getBeastById with id = ${id} : ${error.message}`;
       console.error(message);
       throw new Error(message);
     } finally {
