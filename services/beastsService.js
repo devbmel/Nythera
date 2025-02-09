@@ -20,6 +20,19 @@ class BeastsService {
       throw new Error(error.message);
     }
   }
+
+  async feedBeastById(id, item) {
+    try {
+      const beast = await this.getBeastById(id);
+
+      beast.energy = Math.min(beast.energy + item.energy, 100);
+      beast.happiness = Math.min(beast.happiness + item.happiness, 100);
+
+      return await this.beastRepository.updateBeastById(id, beast);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 export default BeastsService;

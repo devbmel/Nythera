@@ -23,6 +23,22 @@ class BeastsController {
       res.status(404).json({ error: error.message });
     }
   }
+
+  async feedBeastById(req, res) {
+    const beastId = req.params.id;
+
+    const item = req.body;
+    try {
+      const beast = await this.beastsService.feedBeastById(beastId, item);
+
+      return res.json({
+        message: "Créature nourrie avec succès !",
+        beast,
+      });
+    } catch (error) {
+      res.status(404).json({ error: error.message });
+    }
+  }
 }
 
 export default BeastsController;

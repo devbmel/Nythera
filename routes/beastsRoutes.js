@@ -7,5 +7,7 @@ const beastsController = new BeastsController();
 
 router.get("/", (req, res) => beastsController.getBeasts(req, res));
 router.get("/:id", (req, res) => beastsController.getBeastById(req, res));
-
+router.post("/:id/feed", (req, res) =>
+  beastsController.feedBeastById(req, res)
+);
 export default router;
